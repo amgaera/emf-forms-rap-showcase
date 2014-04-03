@@ -47,6 +47,7 @@ http://eclipsesource.com/blogs/tutorials/emf-forms-view-model-elements/
 * add custom models
 * add styling
 * add a short description of each page
+* package the RAP application as a WAR file
 * (optional): add description of the model
 
 ### Feedback:
