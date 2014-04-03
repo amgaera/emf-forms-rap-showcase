@@ -13,15 +13,18 @@ package org.eclipse.rap.emf.forms.main.internal;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.emf.forms.main.ExampleUtil;
 import org.eclipse.emf.forms.main.IExampleContribution;
 import org.eclipse.emf.forms.main.IExamplePage;
+import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.rap.rwt.application.AbstractEntryPoint;
 import org.eclipse.rap.rwt.client.service.BrowserNavigation;
 import org.eclipse.rap.rwt.client.service.BrowserNavigationEvent;
 import org.eclipse.rap.rwt.client.service.BrowserNavigationListener;
 import org.eclipse.rap.rwt.client.service.JavaScriptExecutor;
+import org.eclipse.rap.rwt.service.UISession;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.MouseAdapter;
@@ -59,12 +62,23 @@ public class MainUi extends AbstractEntryPoint {
 
 	@Override
 	protected void createContents(Composite parent) {
+		setupRealm(Display.getCurrent());
+
 		parent.setLayout(new FillLayout());
 		ScrolledComposite scrolledArea = createScrolledArea(parent);
 		Composite content = createContent(scrolledArea);
 		scrolledArea.setContent(content);
 		attachHistoryListener();
 		selectInitialContribution();
+	}
+
+	protected void setupRealm(Display display) {
+		UISession uiSession = RWT.getUISession();
+		if (uiSession.getAttribute("realm") == null) {
+			Realm realm = SWTObservables.getRealm(display);
+			RealmSetter.setRealm(realm);
+			RWT.getUISession().setAttribute("realm", realm);
+		}
 	}
 
 	private void attachHistoryListener() {
@@ -250,18 +264,21 @@ public class MainUi extends AbstractEntryPoint {
 		activate(contribution);
 	}
 
-	private void activate(IExampleContribution contribution) {
-		/*
-		 * IExamplePage examplePage = contribution.createPage(); if (examplePage
-		 * != null) { BrowserNavigation history = RWT.getClient().getService(
-		 * BrowserNavigation.class); if (history != null) {
-		 * history.pushState(contribution.getId(), contribution.getTitle()); }
-		 * Control[] children = centerArea.getChildren(); for (Control child :
-		 * children) { child.dispose(); } Composite contentComp =
-		 * ExampleUtil.initPage( contribution.getTitle(), centerArea);
-		 * examplePage.createControl(contentComp); centerArea.layout(true,
-		 * true); }
-		 */
+	private void activate( IExampleContribution contribution ) {
+		IExamplePage examplePage = contribution.createPage();
+		if( examplePage != null ) {
+			BrowserNavigation history = RWT.getClient().getService( BrowserNavigation.class );
+			if( history != null ) {
+				history.pushState( contribution.getId(), contribution.getTitle() );
+			}
+			Control[] children = centerArea.getChildren();
+			for( Control child : children ) {
+				child.dispose();
+			}
+			Composite contentComp = ExampleUtil.initPage( contribution.getTitle(), centerArea );
+			examplePage.createControl( contentComp );
+			centerArea.layout( true, true );
+		}
 	}
 
 	private static FormData createLogoFormData(Image rapLogo) {

@@ -10,13 +10,8 @@
  ******************************************************************************/
 package org.eclipsesource.emf.forms.common;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecp.ui.view.ECPRendererException;
 import org.eclipse.emf.ecp.ui.view.swt.ECPSWTViewRenderer;
-import org.eclipse.emf.ecp.view.model.provider.xmi.ViewModelFileExtensionsManager;
-import org.eclipse.emf.ecp.view.spi.model.VView;
 import org.eclipse.emf.forms.main.IExamplePage;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -25,22 +20,17 @@ import com.eclipsesource.makeithappen.model.task.TaskFactory;
 import com.eclipsesource.makeithappen.model.task.User;
 
 
-public class ButtonExamplePage implements IExamplePage {
+public class TablesExamplePage implements IExamplePage {
 
 	public void createControl( Composite parent ) {
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		parent.setLayout(gridLayout);
-
+		
 		User user = TaskFactory.eINSTANCE.createUser();
-		ViewModelFileExtensionsManager viewModelFileExtensionsManager = ViewModelFileExtensionsManager.getInstance();
-		URI uri = URI.createURI("platform:/plugin/org.eclipsesource.emf.forms.common/viewmodel/user.viewmodel");
-		final Resource resource = viewModelFileExtensionsManager.loadResource(uri);
-		final EObject eObject = resource.getContents().get(0);
-		final VView view = (VView) eObject;
 
 		try {
-			ECPSWTViewRenderer.INSTANCE.render(parent, user, view);
+			ECPSWTViewRenderer.INSTANCE.render(parent, user);
 		} catch (ECPRendererException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.forms.main.IExampleContribution;
 import org.eclipse.emf.forms.main.IExamplePage;
 import org.eclipsesource.emf.forms.common.ButtonExamplePage;
+import org.eclipsesource.emf.forms.common.TablesExamplePage;
 
 
 class Contributions {
@@ -34,6 +35,7 @@ class Contributions {
 
   private void collectContributions() {
     addContribution( "button", "Buttons", ButtonExamplePage.class );
+    addContribution( "table-template", "Tables", TablesExamplePage.class );
   }
 
   private void addContribution( final String id,
