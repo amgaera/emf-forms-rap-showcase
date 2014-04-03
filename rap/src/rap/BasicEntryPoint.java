@@ -1,8 +1,13 @@
 package rap;
 
 import org.eclipse.core.databinding.observable.Realm;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecp.ui.view.ECPRendererException;
 import org.eclipse.emf.ecp.ui.view.swt.ECPSWTViewRenderer;
+import org.eclipse.emf.ecp.view.model.provider.xmi.ViewModelFileExtensionsManager;
+import org.eclipse.emf.ecp.view.spi.model.VView;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.rap.rwt.application.AbstractEntryPoint;
@@ -19,24 +24,17 @@ import com.eclipsesource.makeithappen.model.task.User;
 
 
 public class BasicEntryPoint extends AbstractEntryPoint {
-	
+
 	public User user;
 
-    @Override
-    protected void createContents(Composite parent) {
-//        parent.setLayout(new GridLayout(2, false));
-//        Group group = new Group(parent, SWT.NONE);
-//        
-//        Button checkbox = new Button(group, SWT.CHECK);
-//        checkbox.setText("Hello");
-//        checkbox.pack();
-//        
-        Button button = new Button(parent, SWT.PUSH);
-        button.setText("World");
-        
-        user = TaskFactory.eINSTANCE.createUser();
-        
-        button.addSelectionListener(new SelectionListener() {
+	@Override
+	protected void createContents(Composite parent) {
+		user = TaskFactory.eINSTANCE.createUser();
+
+		Button button = new Button(parent, SWT.PUSH);
+		button.setText("World");
+
+		button.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -47,37 +45,33 @@ public class BasicEntryPoint extends AbstractEntryPoint {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
-        	
-        });
-//        button.pack();
-//        
-//        Button button2 = new Button(parent, SWT.PUSH);
-//        button2.setText("World2");
-//        
-//        group.setText("Group Label");
-//        group.pack();
-        //group.setVisible(true);
-    	setupRealm(Display.getCurrent());
-    	
-        System.out.println(user);
-        
-        try {
-			ECPSWTViewRenderer.INSTANCE.render(parent, user);
+
+		});
+
+		setupRealm(Display.getCurrent());
+
+		ViewModelFileExtensionsManager viewModelFileExtensionsManager = ViewModelFileExtensionsManager.getInstance();
+		URI uri = URI.createURI("platform:/plugin/rap/viewmodel/user.viewmodel");
+		final Resource resource = viewModelFileExtensionsManager.loadResource(uri);
+		final EObject eObject = resource.getContents().get(0);
+		final VView view = (VView) eObject;
+
+		try {
+			ECPSWTViewRenderer.INSTANCE.render(parent, user, view);
 		} catch (ECPRendererException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
-    
-    protected void setupRealm(Display display) {
-        UISession uiSession = RWT.getUISession();
-        if (uiSession.getAttribute("realm") == null) {
-            Realm realm = SWTObservables.getRealm(display);
-            RealmSetter.setRealm(realm);
-            RWT.getUISession().setAttribute("realm", realm);
-        }
-    }
+	}
+
+	protected void setupRealm(Display display) {
+		UISession uiSession = RWT.getUISession();
+		if (uiSession.getAttribute("realm") == null) {
+			Realm realm = SWTObservables.getRealm(display);
+			RealmSetter.setRealm(realm);
+			RWT.getUISession().setAttribute("realm", realm);
+		}
+	}
 
 }
