@@ -8,13 +8,13 @@
  * Contributors:
  *    EclipseSource - initial API and implementation
  ******************************************************************************/
-package org.eclipse.rap.emf.forms.main.internal;
+package org.eclipse.emf.ecp.view.demo.rap.internal;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.forms.main.IExampleContribution;
+import org.eclipse.emf.ecp.view.demo.rap.IExampleContribution;
 
 public final class Examples {
 

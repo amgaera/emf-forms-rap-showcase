@@ -1,4 +1,4 @@
-package org.eclipse.rap.emf.forms.main.internal;
+package org.eclipse.emf.ecp.view.demo.rap.internal;
 
 import java.lang.reflect.Method;
 

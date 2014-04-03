@@ -8,13 +8,13 @@
  * Contributors:
  *    EclipseSource - initial API and implementation
  ******************************************************************************/
-package org.eclipse.rap.emf.forms.main.internal;
+package org.eclipse.emf.ecp.view.demo.rap.internal;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.forms.main.ExampleUtil;
-import org.eclipse.emf.forms.main.IExampleContribution;
+import org.eclipse.emf.ecp.view.demo.rap.ExampleUtil;
+import org.eclipse.emf.ecp.view.demo.rap.IExampleContribution;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;

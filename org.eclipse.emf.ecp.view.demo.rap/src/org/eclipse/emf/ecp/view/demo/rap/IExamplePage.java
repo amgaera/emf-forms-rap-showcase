@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 EclipseSource and others.
+ * Copyright (c) 2008, 2012 EclipseSource and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,18 +8,11 @@
  * Contributors:
  *    EclipseSource - initial API and implementation
  ******************************************************************************/
-package org.eclipse.rap.emf.forms.main.internal;
+package org.eclipse.emf.ecp.view.demo.rap;
 
-public class ExampleCategory {
+import org.eclipse.swt.widgets.Composite;
 
-	private final String name;
-	
-	public ExampleCategory(String name) {
-		this.name = name;
-	}
+public interface IExamplePage {
 
-	public String getName() {
-		return name;
-	}
-
+	void createControl(Composite parent);
 }

@@ -1,4 +1,4 @@
-package org.eclipse.emf.forms.main;
+package org.eclipse.emf.ecp.view.demo.rap;
 
 import java.io.File;
 

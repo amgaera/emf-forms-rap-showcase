@@ -8,14 +8,14 @@
  * Contributors:
  *    EclipseSource - initial API and implementation
  ******************************************************************************/
-package org.eclipse.rap.emf.forms.main.internal;
+package org.eclipse.emf.ecp.view.demo.rap.internal;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.emf.forms.main.IExampleContribution;
+import org.eclipse.emf.ecp.view.demo.rap.IExampleContribution;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;

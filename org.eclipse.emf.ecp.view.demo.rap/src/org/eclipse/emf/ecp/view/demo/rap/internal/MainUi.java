@@ -8,15 +8,15 @@
  * Contributors:
  * EclipseSource - initial API and implementation
  ******************************************************************************/
-package org.eclipse.rap.emf.forms.main.internal;
+package org.eclipse.emf.ecp.view.demo.rap.internal;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import org.eclipse.core.databinding.observable.Realm;
-import org.eclipse.emf.forms.main.ExampleUtil;
-import org.eclipse.emf.forms.main.IExampleContribution;
-import org.eclipse.emf.forms.main.IExamplePage;
+import org.eclipse.emf.ecp.view.demo.rap.ExampleUtil;
+import org.eclipse.emf.ecp.view.demo.rap.IExampleContribution;
+import org.eclipse.emf.ecp.view.demo.rap.IExamplePage;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.rap.rwt.application.AbstractEntryPoint;

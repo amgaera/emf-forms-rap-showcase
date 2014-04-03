@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 EclipseSource and others.
+ * Copyright (c) 2012 EclipseSource and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,18 @@
  * Contributors:
  *    EclipseSource - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.forms.main;
+package org.eclipse.emf.ecp.view.demo.rap.internal;
 
-public interface IExampleContribution {
+public class ExampleCategory {
 
-	String getTitle();
+	private final String name;
+	
+	public ExampleCategory(String name) {
+		this.name = name;
+	}
 
-	IExamplePage createPage();
+	public String getName() {
+		return name;
+	}
 
 }
