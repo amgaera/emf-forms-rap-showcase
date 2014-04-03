@@ -1,4 +1,4 @@
-package rap;
+package org.eclipsesource.emf.forms.common.internal;
 
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.emf.common.util.URI;

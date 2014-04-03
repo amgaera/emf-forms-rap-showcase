@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Rap
-Bundle-SymbolicName: rap
+Bundle-SymbolicName: org.eclipsesource.emf.forms.common
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: rap.Activator
+Bundle-Activator: org.eclipsesource.emf.forms.common.internal.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.rap.rwt;bundle-version="[2.0.0,3.0.0)",
@@ -12,6 +12,7 @@ Require-Bundle: org.eclipse.rap.rwt;bundle-version="[2.0.0,3.0.0)",
  com.eclipsesource.makeithappen.model;bundle-version="0.1.0",
  org.eclipse.core.databinding.observable,
  org.eclipse.rap.jface.databinding,
- org.eclipse.emf.ecp.view.model.provider.xmi
+ org.eclipse.emf.ecp.view.model.provider.xmi,
+ com.eclipsesource.emf.forms.rap
 Import-Package: org.osgi.framework
 Service-Component: OSGI-INF/contribution.xml
