@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecp.ui.view.ECPRendererException;
 import org.eclipse.emf.ecp.ui.view.swt.ECPSWTViewRenderer;
+// TODO: add a note to the contribution that we'd like the bundle org.eclipse.emf.ecp.view.model.provider.xmi to declare us as an x-friend
 import org.eclipse.emf.ecp.view.model.provider.xmi.ViewModelFileExtensionsManager;
 import org.eclipse.emf.ecp.view.spi.model.VView;
 import org.eclipse.emf.forms.main.IExamplePage;
