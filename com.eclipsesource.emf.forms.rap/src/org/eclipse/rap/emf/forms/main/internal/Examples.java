@@ -47,11 +47,7 @@ public final class Examples {
 	private static IExampleContribution getFirstContribution(
 			ExampleCategory category) {
 		IExampleContribution contribution = null;
-		List<String> contributionIds = category.getContributionIds();
-		if (!contributionIds.isEmpty()) {
-			contribution = getInstance()
-					.getContribution(contributionIds.get(0));
-		}
+		contribution = getInstance().getContribution(category.getName());
 		return contribution;
 	}
 
@@ -59,30 +55,18 @@ public final class Examples {
 		return Activator.getDefault().getExampleContributions();
 	}
 
-	// TODO [rst] Read from configuration file
 	private static List<ExampleCategory> createCategories() {
 		List<ExampleCategory> exampleCategories = new ArrayList<ExampleCategory>();
-		exampleCategories.add(createCategory("Control elements", "input",
-				"button", "canvas", "dialog"));
-		exampleCategories.add(createCategory("Custom elements", "grid-layout",
-				"row-layout", "fill-layout"));
-		exampleCategories.add(createCategory("Layouts", "tableviewer",
-				"treeviewer", "table-markup", "table-template"));
-		exampleCategories.add(createCategory("Groups and tables",
-				"complex-data", "rich-label", "validation", "drag-and-drop",
-				"file-upload", "nls"));
-		exampleCategories.add(createCategory("Additional elements", "gmaps",
-				"ckeditor", "oscilloscope", "carousel", "chart", "nebula-grid",
-				"drop-down"));
+		exampleCategories.add(createCategory("Controls"));
+		exampleCategories.add(createCategory("Layouts"));
+		exampleCategories.add(createCategory("Rules"));
+		exampleCategories.add(createCategory("Custom controls"));
+		exampleCategories.add(createCategory("Overal example"));
 		return exampleCategories;
 	}
 
-	private static ExampleCategory createCategory(String name,
-			String... contributions) {
+	private static ExampleCategory createCategory(String name) {
 		ExampleCategory exampleCategory = new ExampleCategory(name);
-		for (String contribution : contributions) {
-			exampleCategory.addContributionId(contribution);
-		}
 		return exampleCategory;
 	}
 

@@ -12,8 +12,6 @@ package org.eclipse.emf.forms.main;
 
 public interface IExampleContribution {
 
-	String getId();
-
 	String getTitle();
 
 	IExamplePage createPage();

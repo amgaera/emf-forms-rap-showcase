@@ -13,9 +13,7 @@ package org.eclipse.rap.emf.forms.main.internal;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.eclipse.emf.forms.main.ExampleUtil;
 import org.eclipse.emf.forms.main.IExampleContribution;
-import org.eclipse.emf.forms.main.IExamplePage;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.rap.rwt.application.AbstractEntryPoint;
 import org.eclipse.rap.rwt.client.service.BrowserNavigation;
@@ -39,6 +37,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
 
+
+//
 public class MainUi extends AbstractEntryPoint {
 
 	private static final String RAP_PAGE_URL = "http://eclipse.org/rap/";
@@ -72,6 +72,11 @@ public class MainUi extends AbstractEntryPoint {
 				BrowserNavigation.class);
 		if (history != null) {
 			history.addBrowserNavigationListener(new BrowserNavigationListener() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void navigated(BrowserNavigationEvent event) {
 					Examples examples = Examples.getInstance();
 					IExampleContribution contribution = examples
@@ -168,9 +173,9 @@ public class MainUi extends AbstractEntryPoint {
 		composite.setData(RWT.CUSTOM_VARIANT, "mainContentArea");
 		composite.setLayout(new FormLayout());
 		composite.setLayoutData(createContentBodyFormData(header));
-		navigation = createNavigation(composite);
+		setNavigation(createNavigation(composite));
 		Composite footer = createFooter(composite);
-		centerArea = createCenterArea(composite, footer);
+		setCenterArea(createCenterArea(composite, footer));
 	}
 
 	private Composite createCenterArea(Composite parent, Composite footer) {
@@ -246,7 +251,6 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private void selectContribution(IExampleContribution contribution) {
-		navigation.selectNavigationEntry(contribution);
 		activate(contribution);
 	}
 
@@ -331,6 +335,11 @@ public class MainUi extends AbstractEntryPoint {
 	private static void makeLink(Label control, final String url) {
 		control.setCursor(control.getDisplay().getSystemCursor(SWT.CURSOR_HAND));
 		control.addMouseListener(new MouseAdapter() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void mouseDown(MouseEvent e) {
 				JavaScriptExecutor executor = RWT.getClient().getService(
@@ -340,6 +349,22 @@ public class MainUi extends AbstractEntryPoint {
 				}
 			}
 		});
+	}
+
+	public Composite getCenterArea() {
+		return centerArea;
+	}
+
+	public void setCenterArea(Composite centerArea) {
+		this.centerArea = centerArea;
+	}
+
+	public Navigation getNavigation() {
+		return navigation;
+	}
+
+	public void setNavigation(Navigation navigation) {
+		this.navigation = navigation;
 	}
 
 }

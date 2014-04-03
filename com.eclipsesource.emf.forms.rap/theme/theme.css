@@ -41,7 +41,7 @@ Composite.infobox {
   border-radius: 0.0 50.0px 0.0 50.0px;
 }
 
-Composite.navigation {
+.navigation {
   background-color: transparent;
 }
 

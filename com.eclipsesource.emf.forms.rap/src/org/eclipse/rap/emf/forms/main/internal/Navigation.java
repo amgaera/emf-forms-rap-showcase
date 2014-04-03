@@ -10,22 +10,24 @@
  ******************************************************************************/
 package org.eclipse.rap.emf.forms.main.internal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.forms.main.ExampleUtil;
 import org.eclipse.emf.forms.main.IExampleContribution;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.ToolItem;
 
 public abstract class Navigation {
 
 	private final Composite composite;
+	private final List<Button> navigationButtons;
 
 	public Navigation(Composite parent) {
+		navigationButtons = new ArrayList<Button>();
 		composite = new Composite(parent, SWT.NONE);
 		composite
 				.setLayout(ExampleUtil.createGridLayoutWithoutMargin(9, false));
@@ -41,49 +43,13 @@ public abstract class Navigation {
 		List<ExampleCategory> categories = Examples.getInstance()
 				.getCategories();
 		for (ExampleCategory category : categories) {
-			createNavigationDropDown(parent, category);
+			Button button = new Button(parent, SWT.None);
+			button.setData(RWT.CUSTOM_VARIANT, "navigation");
+			button.setText(category.getName());
+			navigationButtons.add(button);
 		}
-	}
 
-	private void createNavigationDropDown(Composite parent,
-			ExampleCategory category) {
-		new DropDownNavigation(parent, category) {
-			@Override
-			protected void contributionSelected(
-					IExampleContribution contribution) {
-				Navigation.this.selectContribution(contribution);
-			}
-		};
 	}
 
 	protected abstract void selectContribution(IExampleContribution contribution);
-
-	public void selectNavigationEntry(IExampleContribution contribution) {
-		Control[] children = composite.getChildren();
-		for (Control control : children) {
-			if (control instanceof DropDownNavigation) {
-				changeSelectedDropDownEntry(contribution,
-						(DropDownNavigation) control);
-			}
-		}
-	}
-
-	private void changeSelectedDropDownEntry(IExampleContribution contribution,
-			DropDownNavigation navEntry) {
-		boolean belongsToDropDownNav = contributionBelongsToDropDownNav(
-				contribution, navEntry);
-		ToolItem item = ((ToolBar) navEntry.getChildren()[0]).getItem(0);
-		if (belongsToDropDownNav) {
-			item.setData(RWT.CUSTOM_VARIANT, "selected");
-		} else {
-			item.setData(RWT.CUSTOM_VARIANT, "navigation");
-		}
-	}
-
-	private boolean contributionBelongsToDropDownNav(
-			IExampleContribution contribution, DropDownNavigation navEntry) {
-		ExampleCategory category = navEntry.getCategory();
-		return category.getContributionIds().contains(contribution.getId());
-	}
-
 }

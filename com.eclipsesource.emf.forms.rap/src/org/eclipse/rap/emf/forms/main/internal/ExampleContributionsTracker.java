@@ -34,11 +34,11 @@ public final class ExampleContributionsTracker extends
 	public IExampleContribution addingService(
 			ServiceReference<IExampleContribution> reference) {
 		IExampleContribution contribution = super.addingService(reference);
-		String id = contribution.getId();
-		if (contributions.containsKey(id)) {
-			throw new IllegalStateException("Duplicate contribution id: " + id);
+		String title = contribution.getTitle();
+		if (contributions.containsKey(title)) {
+			throw new IllegalStateException("Duplicate contribution title: " + title);
 		}
-		contributions.put(id, contribution);
+		contributions.put(title, contribution);
 		return contribution;
 	}
 
@@ -46,7 +46,7 @@ public final class ExampleContributionsTracker extends
 	public void removedService(
 			ServiceReference<IExampleContribution> reference,
 			IExampleContribution service) {
-		contributions.remove(service.getId());
+		contributions.remove(service.getTitle());
 		super.removedService(reference, service);
 	}
 
@@ -54,7 +54,7 @@ public final class ExampleContributionsTracker extends
 		return Collections.unmodifiableCollection(contributions.keySet());
 	}
 
-	public IExampleContribution getContribution(String id) {
-		return contributions.get(id);
+	public IExampleContribution getContribution(String name) {
+		return contributions.get(name);
 	}
 }
