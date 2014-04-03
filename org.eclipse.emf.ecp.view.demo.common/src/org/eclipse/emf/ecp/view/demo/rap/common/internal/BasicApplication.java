@@ -1,4 +1,4 @@
-package org.eclipsesource.emf.forms.common.internal;
+package org.eclipse.emf.ecp.view.demo.rap.common.internal;
 
 import java.util.HashMap;
 import java.util.Map;
