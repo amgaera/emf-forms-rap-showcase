@@ -8,16 +8,16 @@
  * Contributors:
  *    EclipseSource - initial API and implementation
  ******************************************************************************/
-package org.eclipsesource.emf.forms.common.internal;
+package org.eclipse.emf.ecp.view.demo.rap.common.internal;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.ecp.view.demo.rap.common.ButtonExamplePage;
+import org.eclipse.emf.ecp.view.demo.rap.common.TablesExamplePage;
 import org.eclipse.emf.forms.main.IExampleContribution;
 import org.eclipse.emf.forms.main.IExamplePage;
-import org.eclipsesource.emf.forms.common.ButtonExamplePage;
-import org.eclipsesource.emf.forms.common.TablesExamplePage;
 
 
 class Contributions {

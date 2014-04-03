@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Rap
-Bundle-SymbolicName: org.eclipsesource.emf.forms.common
+Bundle-SymbolicName: org.eclipse.emf.ecp.view.demo.common
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.eclipsesource.emf.forms.common.internal.Activator
+Bundle-Activator: org.eclipse.emf.ecp.view.demo.rap.common.internal.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.rap.rwt;bundle-version="[2.0.0,3.0.0)",
