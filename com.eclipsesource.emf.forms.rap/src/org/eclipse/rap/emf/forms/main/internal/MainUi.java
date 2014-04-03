@@ -125,15 +125,14 @@ public class MainUi extends AbstractEntryPoint {
 	private FormData createHeaderFormData() {
 		FormData data = new FormData();
 		data.top = new FormAttachment(0);
-		data.left = new FormAttachment(0);
-		data.right = new FormAttachment(100);
+		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2));
+		data.width = CENTER_AREA_WIDTH;
 		data.height = HEADER_HEIGHT;
 		return data;
 	}
 
 	private Composite createHeaderCenterArea(Composite parent) {
 		Composite headerCenterArea = new Composite(parent, SWT.NONE);
-		headerCenterArea.setData(RWT.CUSTOM_VARIANT, "container-fluid");
 		headerCenterArea.setLayout(new FormLayout());
 		headerCenterArea.setLayoutData(createHeaderCenterAreaFormData());
 		return headerCenterArea;
@@ -153,14 +152,13 @@ public class MainUi extends AbstractEntryPoint {
 		Image rapLogo = MainUi
 				.getImage(headerComp.getDisplay(), "logo.png");
 		logoLabel.setImage(rapLogo);
-		logoLabel.setData(RWT.CUSTOM_VARIANT, "logo");
 		logoLabel.setLayoutData(createLogoFormData(rapLogo));
 		makeLink(logoLabel, RAP_PAGE_URL);
 	}
 
 	private void createTitle(Composite headerComp) {
 		Label title = new Label(headerComp, SWT.NONE);
-		title.setText("Showcase");
+		title.setText("EMF Forms Showcase");
 		title.setLayoutData(createTitleFormData());
 		title.setData(RWT.CUSTOM_VARIANT, "title");
 	}
@@ -187,7 +185,7 @@ public class MainUi extends AbstractEntryPoint {
 		FormData data = new FormData();
 		data.top = new FormAttachment(navBar, 0, SWT.BOTTOM);
 		data.bottom = new FormAttachment(footer, 0, SWT.TOP);
-		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2) - 10);
+		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2));
 		data.width = CENTER_AREA_WIDTH + 10;
 		return data;
 	}
@@ -284,14 +282,13 @@ public class MainUi extends AbstractEntryPoint {
 	private static FormData createNavBarFormData() {
 		FormData data = new FormData();
 		data.top = new FormAttachment(0);
-		data.left = new FormAttachment(0);
-		data.right = new FormAttachment(100);
+		data.left = new FormAttachment(50, -CENTER_AREA_WIDTH / 2);
 		return data;
 	}
 
 	private static FormData createNavigationFormData() {
 		FormData data = new FormData();
-		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2) - 7);
+		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2));
 		data.top = new FormAttachment(0);
 		data.bottom = new FormAttachment(100);
 		data.width = CENTER_AREA_WIDTH;

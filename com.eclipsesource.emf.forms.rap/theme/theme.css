@@ -11,30 +11,12 @@
 
 /* Theme contribution to RAP default theme for Examples demo */
 
-.container-fluid {
-	border-top-left-radius: 0.35em;
-	border-top-right-radius: 0.35em;
-	box-shadow: 0.0 0.0 0.3em rgb(216.0, 33.0, 33.0);
-	width: 1000.0px;
-	margin: 0.0 auto;
-	background: -webkit-radial-gradient(bottom, ellipse cover, rgba(0.0,100.0,200.0,0.5) 0.0%,rgba(50.0,50.0,50.0,0.8) 100.0%);
-	background: -moz-radial-gradient(bottom, ellipse cover, rgba(0.0,100.0,200.0,0.5) 0.0%,rgba(50.0,50.0,50.0,0.8) 100.0%);
-	background: -ms-radial-gradient(bottom, ellipse cover, rgba(0.0,100.0,200.0,0.5) 0.0%,rgba(50.0,50.0,50.0,0.8) 100.0%);
-	background: -o-radial-gradient(bottom, ellipse cover, rgba(0.0,100.0,200.0,0.5) 0.0%,rgba(50.0,50.0,50.0,0.8) 100.0%);
-	padding-left: 0.0;
-	padding-right: 0.0;
-}
-
 .mainshell {
   background-color: #fff;
 }
 
-.logo {
-	width: 100.0px;
-}
-
 .header {	
-  background-color: #31619C;
+  background-color: #336600;
 }
 
 .footer {
