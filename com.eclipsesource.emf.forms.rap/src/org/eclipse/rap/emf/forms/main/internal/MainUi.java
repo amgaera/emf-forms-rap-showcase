@@ -6,20 +6,25 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    EclipseSource - initial API and implementation
+ * EclipseSource - initial API and implementation
  ******************************************************************************/
 package org.eclipse.rap.emf.forms.main.internal;
 
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.eclipse.core.databinding.observable.Realm;
+import org.eclipse.emf.forms.main.ExampleUtil;
 import org.eclipse.emf.forms.main.IExampleContribution;
+import org.eclipse.emf.forms.main.IExamplePage;
+import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.rap.rwt.application.AbstractEntryPoint;
 import org.eclipse.rap.rwt.client.service.BrowserNavigation;
 import org.eclipse.rap.rwt.client.service.BrowserNavigationEvent;
 import org.eclipse.rap.rwt.client.service.BrowserNavigationListener;
 import org.eclipse.rap.rwt.client.service.JavaScriptExecutor;
+import org.eclipse.rap.rwt.service.UISession;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.MouseAdapter;
@@ -37,7 +42,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
 
-
 //
 public class MainUi extends AbstractEntryPoint {
 
@@ -52,35 +56,47 @@ public class MainUi extends AbstractEntryPoint {
 
 	@Override
 	protected Shell createShell(Display display) {
-		Shell shell = super.createShell(display);
+		final Shell shell = super.createShell(display);
 		shell.setData(RWT.CUSTOM_VARIANT, "mainshell");
 		return shell;
 	}
 
 	@Override
 	protected void createContents(Composite parent) {
+		setupRealm(Display.getCurrent());
+
 		parent.setLayout(new FillLayout());
-		ScrolledComposite scrolledArea = createScrolledArea(parent);
-		Composite content = createContent(scrolledArea);
+		final ScrolledComposite scrolledArea = createScrolledArea(parent);
+		final Composite content = createContent(scrolledArea);
 		scrolledArea.setContent(content);
 		attachHistoryListener();
 		selectInitialContribution();
 	}
 
+	protected void setupRealm(Display display) {
+		final UISession uiSession = RWT.getUISession();
+		if (uiSession.getAttribute("realm") == null) {
+			final Realm realm = SWTObservables.getRealm(display);
+			RealmSetter.setRealm(realm);
+			RWT.getUISession().setAttribute("realm", realm);
+		}
+	}
+
 	private void attachHistoryListener() {
-		BrowserNavigation history = RWT.getClient().getService(
-				BrowserNavigation.class);
+		final BrowserNavigation history = RWT.getClient().getService(
+			BrowserNavigation.class);
 		if (history != null) {
 			history.addBrowserNavigationListener(new BrowserNavigationListener() {
 				/**
-				 * 
+				 *
 				 */
 				private static final long serialVersionUID = 1L;
 
+				@Override
 				public void navigated(BrowserNavigationEvent event) {
-					Examples examples = Examples.getInstance();
-					IExampleContribution contribution = examples
-							.getContribution(event.getState());
+					final Examples examples = Examples.getInstance();
+					final IExampleContribution contribution = examples
+						.getContribution(event.getState());
 					if (contribution != null) {
 						selectContribution(contribution);
 					}
@@ -90,16 +106,16 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private void selectInitialContribution() {
-		IExampleContribution contribution = Examples.getInstance()
-				.findInitialContribution();
+		final IExampleContribution contribution = Examples.getInstance()
+			.findInitialContribution();
 		if (contribution != null) {
 			selectContribution(contribution);
 		}
 	}
 
 	private ScrolledComposite createScrolledArea(Composite parent) {
-		ScrolledComposite scrolledComp = new ScrolledComposite(parent,
-				SWT.V_SCROLL | SWT.H_SCROLL);
+		final ScrolledComposite scrolledComp = new ScrolledComposite(parent,
+			SWT.V_SCROLL | SWT.H_SCROLL);
 		scrolledComp.setMinHeight(CONTENT_MIN_HEIGHT);
 		scrolledComp.setMinWidth(CENTER_AREA_WIDTH);
 		scrolledComp.setExpandVertical(true);
@@ -108,43 +124,43 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private Composite createContent(ScrolledComposite scrolledArea) {
-		Composite comp = new Composite(scrolledArea, SWT.NONE);
+		final Composite comp = new Composite(scrolledArea, SWT.NONE);
 		comp.setLayout(new FormLayout());
-		Composite header = createHeader(comp);
+		final Composite header = createHeader(comp);
 		header.setLayoutData(createHeaderFormData());
 		createContentBody(comp, header);
 		return comp;
 	}
 
 	private Composite createHeader(Composite parent) {
-		Composite comp = new Composite(parent, SWT.NONE);
+		final Composite comp = new Composite(parent, SWT.NONE);
 		comp.setData(RWT.CUSTOM_VARIANT, "header");
 		comp.setBackgroundMode(SWT.INHERIT_DEFAULT);
 		comp.setLayout(new FormLayout());
-		Composite headerCenterArea = createHeaderCenterArea(comp);
+		final Composite headerCenterArea = createHeaderCenterArea(comp);
 		createLogo(headerCenterArea);
 		createTitle(headerCenterArea);
 		return comp;
 	}
 
 	private FormData createHeaderFormData() {
-		FormData data = new FormData();
+		final FormData data = new FormData();
 		data.top = new FormAttachment(0);
-		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2));
+		data.left = new FormAttachment(50, -CENTER_AREA_WIDTH / 2);
 		data.width = CENTER_AREA_WIDTH;
 		data.height = HEADER_HEIGHT;
 		return data;
 	}
 
 	private Composite createHeaderCenterArea(Composite parent) {
-		Composite headerCenterArea = new Composite(parent, SWT.NONE);
+		final Composite headerCenterArea = new Composite(parent, SWT.NONE);
 		headerCenterArea.setLayout(new FormLayout());
 		headerCenterArea.setLayoutData(createHeaderCenterAreaFormData());
 		return headerCenterArea;
 	}
 
 	private FormData createHeaderCenterAreaFormData() {
-		FormData data = new FormData();
+		final FormData data = new FormData();
 		data.left = new FormAttachment(50, -CENTER_AREA_WIDTH / 2);
 		data.top = new FormAttachment(0);
 		data.bottom = new FormAttachment(100);
@@ -153,33 +169,33 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private void createLogo(Composite headerComp) {
-		Label logoLabel = new Label(headerComp, SWT.NONE);
-		Image rapLogo = MainUi
-				.getImage(headerComp.getDisplay(), "logo.png");
+		final Label logoLabel = new Label(headerComp, SWT.NONE);
+		final Image rapLogo = MainUi
+			.getImage(headerComp.getDisplay(), "logo.png");
 		logoLabel.setImage(rapLogo);
 		logoLabel.setLayoutData(createLogoFormData(rapLogo));
 		makeLink(logoLabel, RAP_PAGE_URL);
 	}
 
 	private void createTitle(Composite headerComp) {
-		Label title = new Label(headerComp, SWT.NONE);
+		final Label title = new Label(headerComp, SWT.NONE);
 		title.setText("EMF Forms Showcase");
 		title.setLayoutData(createTitleFormData());
 		title.setData(RWT.CUSTOM_VARIANT, "title");
 	}
 
 	private void createContentBody(Composite parent, Composite header) {
-		Composite composite = new Composite(parent, SWT.NONE);
+		final Composite composite = new Composite(parent, SWT.NONE);
 		composite.setData(RWT.CUSTOM_VARIANT, "mainContentArea");
 		composite.setLayout(new FormLayout());
 		composite.setLayoutData(createContentBodyFormData(header));
 		setNavigation(createNavigation(composite));
-		Composite footer = createFooter(composite);
+		final Composite footer = createFooter(composite);
 		setCenterArea(createCenterArea(composite, footer));
 	}
 
 	private Composite createCenterArea(Composite parent, Composite footer) {
-		Composite centerArea = new Composite(parent, SWT.NONE);
+		final Composite centerArea = new Composite(parent, SWT.NONE);
 		centerArea.setLayout(new FillLayout());
 		centerArea.setLayoutData(createCenterAreaFormData(footer));
 		centerArea.setData(RWT.CUSTOM_VARIANT, "centerArea");
@@ -187,21 +203,21 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private FormData createCenterAreaFormData(Composite footer) {
-		FormData data = new FormData();
+		final FormData data = new FormData();
 		data.top = new FormAttachment(navBar, 0, SWT.BOTTOM);
 		data.bottom = new FormAttachment(footer, 0, SWT.TOP);
-		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2));
+		data.left = new FormAttachment(50, -CENTER_AREA_WIDTH / 2);
 		data.width = CENTER_AREA_WIDTH + 10;
 		return data;
 	}
 
 	private Composite createFooter(Composite contentComposite) {
-		Composite footer = new Composite(contentComposite, SWT.NONE);
+		final Composite footer = new Composite(contentComposite, SWT.NONE);
 		footer.setBackgroundMode(SWT.INHERIT_DEFAULT);
 		footer.setLayout(new FormLayout());
 		footer.setData(RWT.CUSTOM_VARIANT, "footer");
 		footer.setLayoutData(createFooterFormData());
-		Label label = new Label(footer, SWT.NONE);
+		final Label label = new Label(footer, SWT.NONE);
 		label.setData(RWT.CUSTOM_VARIANT, "footerLabel");
 		label.setText("RAP version: " + getRapVersion());
 		label.setLayoutData(createFooterLabelFormData(footer));
@@ -209,8 +225,8 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private FormData createFooterFormData() {
-		FormData data = new FormData();
-		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2));
+		final FormData data = new FormData();
+		data.left = new FormAttachment(50, -CENTER_AREA_WIDTH / 2);
 		data.top = new FormAttachment(100, -40);
 		data.bottom = new FormAttachment(100);
 		data.width = CENTER_AREA_WIDTH - 10 - 2;
@@ -218,14 +234,14 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private FormData createFooterLabelFormData(Composite footer) {
-		FormData data = new FormData();
+		final FormData data = new FormData();
 		data.top = new FormAttachment(50, -10);
 		data.right = new FormAttachment(100, -15);
 		return data;
 	}
 
 	private FormData createContentBodyFormData(Composite header) {
-		FormData data = new FormData();
+		final FormData data = new FormData();
 		data.top = new FormAttachment(header, 0);
 		data.left = new FormAttachment(0, 0);
 		data.right = new FormAttachment(100, 0);
@@ -238,13 +254,13 @@ public class MainUi extends AbstractEntryPoint {
 		navBar.setLayout(new FormLayout());
 		navBar.setLayoutData(createNavBarFormData());
 		navBar.setData(RWT.CUSTOM_VARIANT, "nav-bar");
-		Navigation navigation = new Navigation(navBar) {
+		final Navigation navigation = new Navigation(navBar) {
 			@Override
 			protected void selectContribution(IExampleContribution contribution) {
 				MainUi.this.selectContribution(contribution);
 			}
 		};
-		Control navigationControl = navigation.getControl();
+		final Control navigationControl = navigation.getControl();
 		navigationControl.setLayoutData(createNavigationFormData());
 		navigationControl.setData(RWT.CUSTOM_VARIANT, "navigation");
 		return navigation;
@@ -255,44 +271,47 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private void activate(IExampleContribution contribution) {
-		/*
-		 * IExamplePage examplePage = contribution.createPage(); if (examplePage
-		 * != null) { BrowserNavigation history = RWT.getClient().getService(
-		 * BrowserNavigation.class); if (history != null) {
-		 * history.pushState(contribution.getId(), contribution.getTitle()); }
-		 * Control[] children = centerArea.getChildren(); for (Control child :
-		 * children) { child.dispose(); } Composite contentComp =
-		 * ExampleUtil.initPage( contribution.getTitle(), centerArea);
-		 * examplePage.createControl(contentComp); centerArea.layout(true,
-		 * true); }
-		 */
+		final IExamplePage examplePage = contribution.createPage();
+		if (examplePage != null) {
+			final BrowserNavigation history = RWT.getClient().getService(BrowserNavigation.class);
+			if (history != null) {
+				history.pushState(contribution.getTitle(), contribution.getTitle());
+			}
+			final Control[] children = centerArea.getChildren();
+			for (final Control child : children) {
+				child.dispose();
+			}
+			final Composite contentComp = ExampleUtil.initPage(contribution.getTitle(), centerArea);
+			examplePage.createControl(contentComp);
+			centerArea.layout(true, true);
+		}
 	}
 
 	private static FormData createLogoFormData(Image rapLogo) {
-		FormData data = new FormData();
+		final FormData data = new FormData();
 		data.left = new FormAttachment(0);
-		int logoHeight = rapLogo.getBounds().height;
+		final int logoHeight = rapLogo.getBounds().height;
 		data.top = new FormAttachment(50, -(logoHeight / 2));
 		return data;
 	}
 
 	private static FormData createTitleFormData() {
-		FormData data = new FormData();
+		final FormData data = new FormData();
 		data.bottom = new FormAttachment(100, -26);
 		data.left = new FormAttachment(0, 250);
 		return data;
 	}
 
 	private static FormData createNavBarFormData() {
-		FormData data = new FormData();
+		final FormData data = new FormData();
 		data.top = new FormAttachment(0);
 		data.left = new FormAttachment(50, -CENTER_AREA_WIDTH / 2);
 		return data;
 	}
 
 	private static FormData createNavigationFormData() {
-		FormData data = new FormData();
-		data.left = new FormAttachment(50, (-CENTER_AREA_WIDTH / 2));
+		final FormData data = new FormData();
+		data.left = new FormAttachment(50, -CENTER_AREA_WIDTH / 2);
 		data.top = new FormAttachment(0);
 		data.bottom = new FormAttachment(100);
 		data.width = CENTER_AREA_WIDTH;
@@ -300,9 +319,9 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	public static Image getImage(Display display, String path) {
-		ClassLoader classLoader = MainUi.class.getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("resources/"
-				+ path);
+		final ClassLoader classLoader = MainUi.class.getClassLoader();
+		final InputStream inputStream = classLoader.getResourceAsStream("resources/"
+			+ path);
 		Image result = null;
 		if (inputStream != null) {
 			try {
@@ -310,7 +329,7 @@ public class MainUi extends AbstractEntryPoint {
 			} finally {
 				try {
 					inputStream.close();
-				} catch (IOException e) {
+				} catch (final IOException e) {
 					// ignore
 				}
 			}
@@ -319,8 +338,8 @@ public class MainUi extends AbstractEntryPoint {
 	}
 
 	private static String getRapVersion() {
-		Version version = FrameworkUtil.getBundle(RWT.class).getVersion();
-		StringBuilder resultBuffer = new StringBuilder(20);
+		final Version version = FrameworkUtil.getBundle(RWT.class).getVersion();
+		final StringBuilder resultBuffer = new StringBuilder(20);
 		resultBuffer.append(version.getMajor());
 		resultBuffer.append('.');
 		resultBuffer.append(version.getMinor());
@@ -336,14 +355,14 @@ public class MainUi extends AbstractEntryPoint {
 		control.setCursor(control.getDisplay().getSystemCursor(SWT.CURSOR_HAND));
 		control.addMouseListener(new MouseAdapter() {
 			/**
-			 * 
+			 *
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void mouseDown(MouseEvent e) {
-				JavaScriptExecutor executor = RWT.getClient().getService(
-						JavaScriptExecutor.class);
+				final JavaScriptExecutor executor = RWT.getClient().getService(
+					JavaScriptExecutor.class);
 				if (executor != null) {
 					executor.execute("window.location.href = '" + url + "'");
 				}
