@@ -49,3 +49,15 @@ http://eclipsesource.com/blogs/tutorials/emf-forms-view-model-elements/
 * add a short description of each page
 * (optional): add description of the model
 
+### Feedback:
+
+* Update bundle names for:
+ * org.eclipse.emf.ecp.view.demo.rap
+ * org.eclipse.emf.ecp.view.demo.rap.common
+* Add to IExamplePage getDescription()
+* Copy .settings and .checkstyle (root directory) to each project to apply settings and formatting
+ * Remove all warnings
+ * Make the bundle clean (package exports, dependencies with version ranges, etc.)
+* (optional): add infobox
+
+
