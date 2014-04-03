@@ -1,7 +1,7 @@
 emf-forms-rap-showcase
 ======================
 
-#### Showcase
+### Showcase
 
 ##### Input fields
 * input field with text
@@ -34,3 +34,14 @@ ECP provides standard controls for every type of attribute or reference. Additio
 
 ##### Reference
 http://eclipsesource.com/blogs/tutorials/emf-forms-view-model-elements/
+
+
+### To do
+* add buttons instead of dropdown menu
+* add remaining pages (currently two, in total 5)
+ * and write custom controls
+* add custom models
+* add styling
+* add a short description of each page
+* (optional): add description of the model
+
