@@ -39,26 +39,28 @@ Should show all elements
 ##### Reference
 http://eclipsesource.com/blogs/tutorials/emf-forms-view-model-elements/
 
+### WAR Deployment Documentation
+[WAR Deployment Documentation](https://github.com/amgaera/emf-forms-rap-showcase/wiki/WAR-Deployment)
 
 ### To do
-* add buttons instead of dropdown menu
+* ~~add buttons instead of dropdown menu~~
 * add remaining pages (currently two, in total 5)
  * and write custom controls
-* add custom models
+* ~~add custom models~~
 * add styling
 * add a short description of each page
-* package the RAP application as a WAR file
+* ~~package the RAP application as a WAR file~~
 * (optional): add description of the model
 
 ### Feedback:
 
-* Update bundle names for:
- * org.eclipse.emf.ecp.view.demo.rap
- * org.eclipse.emf.ecp.view.demo.rap.common
+* ~~Update bundle names for:~~
+ * ~~org.eclipse.emf.ecp.view.demo.rap~~
+ * ~~org.eclipse.emf.ecp.view.demo.rap.common~~
 * Add to IExamplePage getDescription()
-* Copy .settings and .checkstyle (root directory) to each project to apply settings and formatting
- * Remove all warnings
- * Make the bundle clean (package exports, dependencies with version ranges, etc.)
+* ~~Copy .settings and .checkstyle (root directory) to each project to apply settings and formatting~~
+ * ~~Remove all warnings~~
+ * ~~Make the bundle clean (package exports, dependencies with version ranges, etc.)~~
 * (optional): add infobox
 
 
