@@ -29,16 +29,41 @@
       <plugin id="org.eclipse.emf.ecp.core"/>
       <plugin id="org.eclipse.emf.ecp.edit"/>
       <plugin id="org.eclipse.emf.ecp.edit.swt"/>
+      <plugin id="org.eclipse.emf.ecp.ui"/>
       <plugin id="org.eclipse.emf.ecp.ui.view"/>
       <plugin id="org.eclipse.emf.ecp.ui.view.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.categorization.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.categorization.swt"/>
       <plugin id="org.eclipse.emf.ecp.view.context"/>
+      <plugin id="org.eclipse.emf.ecp.view.core.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.custom.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.custom.ui"/>
+      <plugin id="org.eclipse.emf.ecp.view.custom.ui.swt"/>
       <plugin id="org.eclipse.emf.ecp.view.demo.common"/>
       <plugin id="org.eclipse.emf.ecp.view.demo.rap"/>
+      <plugin id="org.eclipse.emf.ecp.view.group.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.group.ui.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.groupedgrid.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.groupedgrid.ui.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.ui.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.label.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.label.ui.swt"/>
       <plugin id="org.eclipse.emf.ecp.view.model"/>
       <plugin id="org.eclipse.emf.ecp.view.model.provider.xmi"/>
+      <plugin id="org.eclipse.emf.ecp.view.separator.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.separator.ui.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.table.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.table.ui.swt"/>
       <plugin id="org.eclipse.emf.ecp.view.template.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.treemasterdetail.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.treemasterdetail.ui.swt"/>
       <plugin id="org.eclipse.emf.ecp.view.validation"/>
+      <plugin id="org.eclipse.emf.ecp.view.vertical.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.vertical.ui.swt"/>
       <plugin id="org.eclipse.emf.edit"/>
+      <plugin id="org.eclipse.emf.rap.common.ui"/>
+      <plugin id="org.eclipse.emf.rap.edit.ui"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.console"/>
@@ -49,6 +74,7 @@
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.util"/>
+      <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.net4j.util"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
@@ -56,6 +82,9 @@
       <plugin id="org.eclipse.rap.jface.databinding"/>
       <plugin id="org.eclipse.rap.rwt"/>
       <plugin id="org.eclipse.rap.rwt.osgi"/>
+      <plugin id="org.eclipse.rap.ui"/>
+      <plugin id="org.eclipse.rap.ui.views"/>
+      <plugin id="org.eclipse.rap.ui.workbench"/>
    </plugins>
 
    <configurations>
@@ -85,16 +114,41 @@
       <plugin id="org.eclipse.emf.ecp.core" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.edit" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.edit.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.ui" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.ui.view" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.ui.view.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.categorization.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.categorization.swt" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.view.context" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.core.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.custom.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.custom.ui" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.custom.ui.swt" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.view.demo.common" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.view.demo.rap" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.group.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.group.ui.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.groupedgrid.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.groupedgrid.ui.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.ui.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.label.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.label.ui.swt" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.view.model" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.view.model.provider.xmi" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.separator.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.separator.ui.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.table.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.table.ui.swt" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.view.template.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.treemasterdetail.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.treemasterdetail.ui.swt" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.ecp.view.validation" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.vertical.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.vertical.ui.swt" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.emf.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.rap.common.ui" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.rap.edit.ui" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.app" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="0" />
@@ -105,6 +159,7 @@
       <plugin id="org.eclipse.equinox.preferences" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.registry" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.util" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.help" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.net4j.util" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="0" />
@@ -112,6 +167,9 @@
       <plugin id="org.eclipse.rap.jface.databinding" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.rwt" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.rwt.osgi" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.ui" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.ui.views" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.ui.workbench" autoStart="true" startLevel="0" />
    </configurations>
 
    <warConfiguration webXml="/org.eclipse.emf.ecp.view.demo.rap/WEB-INF/web.xml" launchIni="/org.eclipse.emf.ecp.view.demo.rap/WEB-INF/launch.ini">
