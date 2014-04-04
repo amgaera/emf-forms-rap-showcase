@@ -6,11 +6,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    EclipseSource - initial API and implementation
+ * EclipseSource - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.ecp.view.demo.rap;
 
 public interface IExampleContribution {
+
+	String getId();
 
 	String getTitle();
 

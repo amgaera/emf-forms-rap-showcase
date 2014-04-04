@@ -96,7 +96,7 @@ public class MainUi extends AbstractEntryPoint {
 				public void navigated(BrowserNavigationEvent event) {
 					final Examples examples = Examples.getInstance();
 					final IExampleContribution contribution = examples
-						.getContribution(event.getState());
+						.getContributionById(event.getState());
 					if (contribution != null) {
 						selectContribution(contribution);
 					}
@@ -255,8 +255,9 @@ public class MainUi extends AbstractEntryPoint {
 		navBar.setLayoutData(createNavBarFormData());
 		navBar.setData(RWT.CUSTOM_VARIANT, "nav-bar");
 		final Navigation navigation = new Navigation(navBar) {
+
 			@Override
-			protected void selectContribution(IExampleContribution contribution) {
+			protected void buttonSelected(IExampleContribution contribution) {
 				MainUi.this.selectContribution(contribution);
 			}
 		};
@@ -275,7 +276,7 @@ public class MainUi extends AbstractEntryPoint {
 		if (examplePage != null) {
 			final BrowserNavigation history = RWT.getClient().getService(BrowserNavigation.class);
 			if (history != null) {
-				history.pushState(contribution.getTitle(), contribution.getTitle());
+				history.pushState(contribution.getId(), contribution.getId());
 			}
 			final Control[] children = centerArea.getChildren();
 			for (final Control child : children) {

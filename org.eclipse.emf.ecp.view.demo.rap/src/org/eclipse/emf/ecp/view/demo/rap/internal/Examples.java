@@ -6,13 +6,14 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    EclipseSource - initial API and implementation
+ * EclipseSource - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.ecp.view.demo.rap.internal;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecp.view.demo.rap.IExampleContribution;
 
@@ -31,13 +32,17 @@ public final class Examples {
 		return Collections.unmodifiableList(EXAMPLE_CATEGORIES);
 	}
 
-	public IExampleContribution getContribution(String id) {
-		return getContributionsTracker().getContribution(id);
+	public IExampleContribution getContributionById(String id) {
+		return getContributionsTracker().getContributionById(id);
+	}
+
+	public Map<String, IExampleContribution> getAllContributions() {
+		return getContributionsTracker().getAllContributions();
 	}
 
 	public IExampleContribution findInitialContribution() {
 		IExampleContribution contribution = null;
-		List<ExampleCategory> categories = getInstance().getCategories();
+		final List<ExampleCategory> categories = getInstance().getCategories();
 		if (!categories.isEmpty()) {
 			contribution = Examples.getFirstContribution(categories.get(0));
 		}
@@ -45,9 +50,9 @@ public final class Examples {
 	}
 
 	private static IExampleContribution getFirstContribution(
-			ExampleCategory category) {
+		ExampleCategory category) {
 		IExampleContribution contribution = null;
-		contribution = getInstance().getContribution(category.getName());
+		contribution = getInstance().getContributionById(category.getContributionId());
 		return contribution;
 	}
 
@@ -56,18 +61,17 @@ public final class Examples {
 	}
 
 	private static List<ExampleCategory> createCategories() {
-		List<ExampleCategory> exampleCategories = new ArrayList<ExampleCategory>();
-		exampleCategories.add(createCategory("Controls"));
-		exampleCategories.add(createCategory("Layouts"));
-		exampleCategories.add(createCategory("Rules"));
-		exampleCategories.add(createCategory("Custom controls"));
-		exampleCategories.add(createCategory("Overal example"));
+		final List<ExampleCategory> exampleCategories = new ArrayList<ExampleCategory>();
+		exampleCategories.add(createCategory("Controls", "button"));
+		exampleCategories.add(createCategory("Layouts", "table-template"));
+		exampleCategories.add(createCategory("Rules", "rules"));
+		exampleCategories.add(createCategory("Custom controls", "custom-controls"));
+		exampleCategories.add(createCategory("Overal example", "overal-example"));
 		return exampleCategories;
 	}
 
-	private static ExampleCategory createCategory(String name) {
-		ExampleCategory exampleCategory = new ExampleCategory(name);
+	private static ExampleCategory createCategory(String name, String contributionId) {
+		final ExampleCategory exampleCategory = new ExampleCategory(name, contributionId);
 		return exampleCategory;
 	}
-
 }

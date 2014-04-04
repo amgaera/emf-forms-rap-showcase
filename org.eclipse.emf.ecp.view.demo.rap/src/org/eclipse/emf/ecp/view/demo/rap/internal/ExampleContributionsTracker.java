@@ -6,12 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    EclipseSource - initial API and implementation
+ * EclipseSource - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.ecp.view.demo.rap.internal;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +19,7 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
 
 public final class ExampleContributionsTracker extends
-		ServiceTracker<IExampleContribution, IExampleContribution> {
+	ServiceTracker<IExampleContribution, IExampleContribution> {
 
 	private final Map<String, IExampleContribution> contributions;
 
@@ -32,29 +30,30 @@ public final class ExampleContributionsTracker extends
 
 	@Override
 	public IExampleContribution addingService(
-			ServiceReference<IExampleContribution> reference) {
-		IExampleContribution contribution = super.addingService(reference);
-		String title = contribution.getTitle();
-		if (contributions.containsKey(title)) {
-			throw new IllegalStateException("Duplicate contribution title: " + title);
+		ServiceReference<IExampleContribution> reference) {
+		final IExampleContribution contribution = super.addingService(reference);
+		final String id = contribution.getId();
+		if (contributions.containsKey(id)) {
+			throw new IllegalStateException("Duplicate contribution id: " + id);
 		}
-		contributions.put(title, contribution);
+		contributions.put(id, contribution);
 		return contribution;
 	}
 
 	@Override
 	public void removedService(
-			ServiceReference<IExampleContribution> reference,
-			IExampleContribution service) {
-		contributions.remove(service.getTitle());
+		ServiceReference<IExampleContribution> reference,
+		IExampleContribution service) {
+		contributions.remove(service.getId());
 		super.removedService(reference, service);
 	}
 
-	public Collection<String> getContributionIds() {
-		return Collections.unmodifiableCollection(contributions.keySet());
+	public IExampleContribution getContributionById(String id) {
+		return contributions.get(id);
 	}
 
-	public IExampleContribution getContribution(String name) {
-		return contributions.get(name);
+	public Map<String, IExampleContribution> getAllContributions()
+	{
+		return contributions;
 	}
 }

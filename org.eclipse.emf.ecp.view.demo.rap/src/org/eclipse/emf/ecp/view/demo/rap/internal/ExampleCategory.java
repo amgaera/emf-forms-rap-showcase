@@ -6,20 +6,27 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    EclipseSource - initial API and implementation
+ * EclipseSource - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.ecp.view.demo.rap.internal;
 
 public class ExampleCategory {
 
 	private final String name;
-	
-	public ExampleCategory(String name) {
+	public String contributionId;
+
+	public ExampleCategory(String name, String contributionId) {
 		this.name = name;
+		this.contributionId = contributionId;
 	}
 
 	public String getName() {
 		return name;
+	}
+
+	public String getContributionId()
+	{
+		return contributionId;
 	}
 
 }

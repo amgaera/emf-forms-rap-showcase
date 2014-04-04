@@ -24,6 +24,7 @@ import com.eclipsesource.makeithappen.model.task.User;
 
 public class TablesExamplePage implements IExamplePage {
 
+	@Override
 	public void createControl(Composite parent) {
 		final GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
@@ -38,7 +39,6 @@ public class TablesExamplePage implements IExamplePage {
 		try {
 			ECPSWTViewRenderer.INSTANCE.render(parent, user);
 		} catch (final ECPRendererException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
