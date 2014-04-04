@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Composite;
 import com.eclipsesource.makeithappen.model.task.TaskFactory;
 import com.eclipsesource.makeithappen.model.task.User;
 
-public class ButtonExamplePage implements IExamplePage {
+public class LayoutExamplePage implements IExamplePage {
 
 	@Override
 	public void createControl(Composite parent) {
@@ -38,7 +38,7 @@ public class ButtonExamplePage implements IExamplePage {
 		final ViewModelFileExtensionsManager viewModelFileExtensionsManager = ViewModelFileExtensionsManager
 			.getInstance();
 		final URI uri = URI
-			.createURI("platform:/plugin/org.eclipse.emf.ecp.view.demo.common/viewmodel/buttons.viewmodel");
+			.createURI("platform:/plugin/org.eclipse.emf.ecp.view.demo.common/viewmodel/layouts.viewmodel");
 		final Resource resource = ViewModelFileExtensionsManager.loadResource(uri);
 		final EObject eObject = resource.getContents().get(0);
 		final VView view = (VView) eObject;
@@ -46,7 +46,6 @@ public class ButtonExamplePage implements IExamplePage {
 		try {
 			ECPSWTViewRenderer.INSTANCE.render(parent, user, view);
 		} catch (final ECPRendererException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    EclipseSource - initial API and implementation
+ * EclipseSource - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.ecp.view.demo.rap.internal;
 
@@ -24,17 +24,19 @@ public class Activator implements BundleActivator {
 	private ExampleContributionsTracker serviceTracker;
 	private ServiceRegistration<?> registration;
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		plugin = this;
 		serviceTracker = new ExampleContributionsTracker(context);
 		serviceTracker.open();
-		Dictionary<String, String> properties = new Hashtable<String, String>();
+		final Dictionary<String, String> properties = new Hashtable<String, String>();
 		properties.put("contextPath", "rapdemo");
 		registration = context.registerService(
-				ApplicationConfiguration.class.getName(),
-				new ExampleApplication(), properties);
+			ApplicationConfiguration.class.getName(),
+			new ExampleApplication(), properties);
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		registration.unregister();
 		serviceTracker.close();

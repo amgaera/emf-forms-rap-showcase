@@ -63,9 +63,9 @@ public final class Examples {
 	private static List<ExampleCategory> createCategories() {
 		final List<ExampleCategory> exampleCategories = new ArrayList<ExampleCategory>();
 		exampleCategories.add(createCategory("Controls", "button"));
-		exampleCategories.add(createCategory("Layouts", "table-template"));
+		exampleCategories.add(createCategory("Layouts", "layout"));
 		exampleCategories.add(createCategory("Rules", "rules"));
-		exampleCategories.add(createCategory("Custom controls", "custom-controls"));
+		exampleCategories.add(createCategory("Custom controls", "table-template"));
 		exampleCategories.add(createCategory("Overal example", "overal-example"));
 		return exampleCategories;
 	}

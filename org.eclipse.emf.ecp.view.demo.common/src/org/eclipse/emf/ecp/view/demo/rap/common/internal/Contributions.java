@@ -17,6 +17,8 @@ import java.util.List;
 import org.eclipse.emf.ecp.view.demo.rap.IExampleContribution;
 import org.eclipse.emf.ecp.view.demo.rap.IExamplePage;
 import org.eclipse.emf.ecp.view.demo.rap.common.ButtonExamplePage;
+import org.eclipse.emf.ecp.view.demo.rap.common.LayoutExamplePage;
+import org.eclipse.emf.ecp.view.demo.rap.common.RulesExamplePage;
 import org.eclipse.emf.ecp.view.demo.rap.common.TablesExamplePage;
 
 class Contributions {
@@ -34,6 +36,8 @@ class Contributions {
 
 	private void collectContributions() {
 		addContribution("button", "Buttons", ButtonExamplePage.class);
+		addContribution("layout", "Layouts", LayoutExamplePage.class);
+		addContribution("rules", "Rules", RulesExamplePage.class);
 		addContribution("table-template", "Tables", TablesExamplePage.class);
 	}
 
@@ -43,14 +47,17 @@ class Contributions {
 	{
 		final IExampleContribution contribution = new IExampleContribution() {
 
+			@Override
 			public String getId() {
 				return id;
 			}
 
+			@Override
 			public String getTitle() {
 				return title;
 			}
 
+			@Override
 			public IExamplePage createPage() {
 				try {
 					return clazz.newInstance();

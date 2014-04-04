@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    EclipseSource - initial API and implementation
+ * EclipseSource - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.ecp.view.demo.rap.internal;
 
@@ -30,35 +30,36 @@ import org.osgi.framework.FrameworkUtil;
 
 public class ExampleApplication implements ApplicationConfiguration {
 
+	@Override
 	public void configure(Application application) {
-		Map<String, String> properties = new HashMap<String, String>();
+		final Map<String, String> properties = new HashMap<String, String>();
 		properties.put(WebClient.PAGE_TITLE, "EMF Forms Showcase");
 		properties.put(WebClient.BODY_HTML,
-				readTextFromResource("resources/body.html", "UTF-8"));
+			readTextFromResource("resources/body.html", "UTF-8"));
 		properties.put(WebClient.FAVICON, "icons/favicon.png");
 		application.setOperationMode(OperationMode.SWT_COMPATIBILITY);
 		application.addEntryPoint("/", MainUi.class, properties);
 		application.addStyleSheet(RWT.DEFAULT_THEME_ID, "theme/theme.css");
 		application.addResource("icons/favicon.png",
-				createResourceLoader("icons/favicon.png"));
+			createResourceLoader("icons/favicon.png"));
 		application.addResource("icons/loading.gif",
-				createResourceLoader("icons/loading.gif"));
+			createResourceLoader("icons/loading.gif"));
 		registerClientScriptingResources(application);
 	}
 
 	// TODO [rst] Replace this hack with a proper resource loading mechanism
 	// (see bug 369957)
 	private void registerClientScriptingResources(Application application) {
-		Bundle clientScriptingBundle = findBundle("org.eclipse.rap.clientscripting");
+		final Bundle clientScriptingBundle = findBundle("org.eclipse.rap.clientscripting");
 		if (clientScriptingBundle != null) {
-			String className = "org.eclipse.rap.clientscripting.internal.resources.ClientScriptingResources";
+			final String className = "org.eclipse.rap.clientscripting.internal.resources.ClientScriptingResources";
 			try {
-				Class<?> resourceClass = clientScriptingBundle
-						.loadClass(className);
-				Method registerMethod = resourceClass.getMethod("register",
-						Application.class);
+				final Class<?> resourceClass = clientScriptingBundle
+					.loadClass(className);
+				final Method registerMethod = resourceClass.getMethod("register",
+					Application.class);
 				registerMethod.invoke(null, application);
-			} catch (Exception exception) {
+			} catch (final Exception exception) {
 				throw new RuntimeException(exception);
 			}
 		}
@@ -66,9 +67,9 @@ public class ExampleApplication implements ApplicationConfiguration {
 
 	private Bundle findBundle(String symbolicId) {
 		Bundle result = null;
-		BundleContext bundleContext = FrameworkUtil.getBundle(getClass())
-				.getBundleContext();
-		for (Bundle bundle : bundleContext.getBundles()) {
+		final BundleContext bundleContext = FrameworkUtil.getBundle(getClass())
+			.getBundleContext();
+		for (final Bundle bundle : bundleContext.getBundles()) {
 			if (symbolicId.equals(bundle.getSymbolicName())) {
 				result = bundle;
 			}
@@ -78,29 +79,30 @@ public class ExampleApplication implements ApplicationConfiguration {
 
 	private static ResourceLoader createResourceLoader(final String resourceName) {
 		return new ResourceLoader() {
+			@Override
 			public InputStream getResourceAsStream(String resourceName)
-					throws IOException {
+				throws IOException {
 				return getClass().getClassLoader().getResourceAsStream(
-						resourceName);
+					resourceName);
 			}
 		};
 	}
 
 	private static String readTextFromResource(String resourceName,
-			String charset) {
+		String charset) {
 		String result;
 		try {
-			ClassLoader classLoader = ExampleApplication.class.getClassLoader();
-			InputStream inputStream = classLoader
-					.getResourceAsStream(resourceName);
+			final ClassLoader classLoader = ExampleApplication.class.getClassLoader();
+			final InputStream inputStream = classLoader
+				.getResourceAsStream(resourceName);
 			if (inputStream == null) {
 				throw new RuntimeException("Resource not found: "
-						+ resourceName);
+					+ resourceName);
 			}
 			try {
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(inputStream, charset));
-				StringBuilder stringBuilder = new StringBuilder();
+				final BufferedReader reader = new BufferedReader(
+					new InputStreamReader(inputStream, charset));
+				final StringBuilder stringBuilder = new StringBuilder();
 				String line = reader.readLine();
 				while (line != null) {
 					stringBuilder.append(line);
@@ -111,9 +113,9 @@ public class ExampleApplication implements ApplicationConfiguration {
 			} finally {
 				inputStream.close();
 			}
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new RuntimeException("Failed to read text from resource: "
-					+ resourceName);
+				+ resourceName);
 		}
 		return result;
 	}
