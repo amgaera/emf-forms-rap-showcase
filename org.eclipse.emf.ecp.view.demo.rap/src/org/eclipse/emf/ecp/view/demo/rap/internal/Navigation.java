@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
+@SuppressWarnings("nls")
 public abstract class Navigation {
 
 	private final Composite composite;
@@ -50,6 +51,8 @@ public abstract class Navigation {
 			button.setData(RWT.CUSTOM_VARIANT, "navigation");
 			button.setText(category.getName());
 			button.addSelectionListener(new SelectionAdapter() {
+				private static final long serialVersionUID = 1L;
+
 				@Override
 				public void widgetSelected(SelectionEvent event) {
 					final IExampleContribution contribution = Examples.getInstance()

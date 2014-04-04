@@ -42,7 +42,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
 
-//
+@SuppressWarnings("nls")
 public class MainUi extends AbstractEntryPoint {
 
 	private static final String RAP_PAGE_URL = "http://eclipse.org/rap/";

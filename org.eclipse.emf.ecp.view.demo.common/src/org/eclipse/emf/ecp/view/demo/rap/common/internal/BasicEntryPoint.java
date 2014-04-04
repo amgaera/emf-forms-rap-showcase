@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Display;
 import com.eclipsesource.makeithappen.model.task.TaskFactory;
 import com.eclipsesource.makeithappen.model.task.User;
 
-
+@SuppressWarnings("restriction")
 public class BasicEntryPoint extends AbstractEntryPoint {
 
 	public User user;
@@ -31,14 +31,16 @@ public class BasicEntryPoint extends AbstractEntryPoint {
 	protected void createContents(Composite parent) {
 		user = TaskFactory.eINSTANCE.createUser();
 
-		Button button = new Button(parent, SWT.PUSH);
-		button.setText("World");
+		final Button button = new Button(parent, SWT.PUSH);
+		button.setText("World"); //$NON-NLS-1$
 
 		button.addSelectionListener(new SelectionListener() {
 
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("widgetSelected");
+				System.out.println("widgetSelected"); //$NON-NLS-1$
 				System.out.println(user);
 			}
 
@@ -51,26 +53,25 @@ public class BasicEntryPoint extends AbstractEntryPoint {
 
 		setupRealm(Display.getCurrent());
 
-		ViewModelFileExtensionsManager viewModelFileExtensionsManager = ViewModelFileExtensionsManager.getInstance();
-		URI uri = URI.createURI("platform:/plugin/rap/viewmodel/user.viewmodel");
-		final Resource resource = viewModelFileExtensionsManager.loadResource(uri);
+		final URI uri = URI.createURI("platform:/plugin/rap/viewmodel/user.viewmodel"); //$NON-NLS-1$
+		final Resource resource = ViewModelFileExtensionsManager.loadResource(uri);
 		final EObject eObject = resource.getContents().get(0);
 		final VView view = (VView) eObject;
 
 		try {
 			ECPSWTViewRenderer.INSTANCE.render(parent, user, view);
-		} catch (ECPRendererException e) {
+		} catch (final ECPRendererException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	protected void setupRealm(Display display) {
-		UISession uiSession = RWT.getUISession();
-		if (uiSession.getAttribute("realm") == null) {
-			Realm realm = SWTObservables.getRealm(display);
+		final UISession uiSession = RWT.getUISession();
+		if (uiSession.getAttribute("realm") == null) { //$NON-NLS-1$
+			final Realm realm = SWTObservables.getRealm(display);
 			RealmSetter.setRealm(realm);
-			RWT.getUISession().setAttribute("realm", realm);
+			RWT.getUISession().setAttribute("realm", realm); //$NON-NLS-1$
 		}
 	}
 

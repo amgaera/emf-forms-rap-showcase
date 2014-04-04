@@ -60,6 +60,7 @@ public final class Examples {
 		return Activator.getDefault().getExampleContributions();
 	}
 
+	@SuppressWarnings("nls")
 	private static List<ExampleCategory> createCategories() {
 		final List<ExampleCategory> exampleCategories = new ArrayList<ExampleCategory>();
 		exampleCategories.add(createCategory("Controls", "button"));

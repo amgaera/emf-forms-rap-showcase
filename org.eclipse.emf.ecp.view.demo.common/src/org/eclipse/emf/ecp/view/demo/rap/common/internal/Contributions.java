@@ -35,10 +35,10 @@ class Contributions {
 	}
 
 	private void collectContributions() {
-		addContribution("button", "Buttons", ButtonExamplePage.class);
-		addContribution("layout", "Layouts", LayoutExamplePage.class);
-		addContribution("rules", "Rules", RulesExamplePage.class);
-		addContribution("table-template", "Tables", TablesExamplePage.class);
+		addContribution("button", "Buttons", ButtonExamplePage.class); //$NON-NLS-1$ //$NON-NLS-2$
+		addContribution("layout", "Layouts", LayoutExamplePage.class); //$NON-NLS-1$ //$NON-NLS-2$
+		addContribution("rules", "Rules", RulesExamplePage.class); //$NON-NLS-1$ //$NON-NLS-2$
+		addContribution("table-template", "Tables", TablesExamplePage.class); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	private void addContribution(final String id,
@@ -62,7 +62,7 @@ class Contributions {
 				try {
 					return clazz.newInstance();
 				} catch (final Exception exception) {
-					throw new RuntimeException("Failed to instatiate class " + clazz.getName(), exception);
+					throw new RuntimeException("Failed to instatiate class " + clazz.getName(), exception); //$NON-NLS-1$
 				}
 			}
 		};

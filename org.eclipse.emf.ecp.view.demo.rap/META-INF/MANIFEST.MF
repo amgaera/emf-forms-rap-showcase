@@ -4,8 +4,8 @@ Built-By: genie.rt.rap
 Bundle-SymbolicName: org.eclipse.emf.ecp.view.demo.rap
 Bundle-Activator: org.eclipse.emf.ecp.view.demo.rap.internal.Activator
 Require-Bundle: org.eclipse.rap.rwt;bundle-version="[2.3.0,3.0.0)",
- org.eclipse.core.databinding.observable,
- org.eclipse.rap.jface.databinding
+ org.eclipse.core.databinding.observable;bundle-version="[1.4.0,1.5.0)",
+ org.eclipse.rap.jface.databinding;bundle-version="[2.3.0,2.4.0)"
 Export-Package: org.eclipse.emf.ecp.view.demo.rap;version="2.3.0",
  org.eclipse.emf.ecp.view.demo.rap.internal;version="2.3.0";x-internal:=true
 Bundle-Version: 1.0.0

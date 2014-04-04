@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    EclipseSource - initial API and implementation
+ * EclipseSource - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.ecp.view.demo.rap.internal;
 
@@ -18,30 +18,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * This servlet is registered for alias "/" and redirects all requests to the
- * <code>examples</code> servlet.
+ * This servlet is registered for alias "/" and redirects all requests to the <code>examples</code> servlet.
  */
 public class RedirectServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String REDIRECT_URL = "examples";
+	private static final String REDIRECT_URL = "examples"; //$NON-NLS-1$
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+		throws ServletException, IOException {
 		redirect(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+		throws ServletException, IOException {
 		redirect(req, resp);
 	}
 
 	private static void redirect(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-		if (request.getPathInfo().equals("/")) {
+		HttpServletResponse response) throws IOException {
+		if (request.getPathInfo().equals("/")) { //$NON-NLS-1$
 			response.sendRedirect(response.encodeRedirectURL(REDIRECT_URL));
 		} else {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);

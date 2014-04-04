@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Composite;
 import com.eclipsesource.makeithappen.model.task.TaskFactory;
 import com.eclipsesource.makeithappen.model.task.User;
 
+@SuppressWarnings("restriction")
 public class RulesExamplePage implements IExamplePage {
 
 	@Override
@@ -35,10 +36,8 @@ public class RulesExamplePage implements IExamplePage {
 		parent.setLayout(gridLayout);
 
 		final User user = TaskFactory.eINSTANCE.createUser();
-		final ViewModelFileExtensionsManager viewModelFileExtensionsManager = ViewModelFileExtensionsManager
-			.getInstance();
 		final URI uri = URI
-			.createURI("platform:/plugin/org.eclipse.emf.ecp.view.demo.common/viewmodel/rules.viewmodel");
+			.createURI("platform:/plugin/org.eclipse.emf.ecp.view.demo.common/viewmodel/rules.viewmodel"); //$NON-NLS-1$
 		final Resource resource = ViewModelFileExtensionsManager.loadResource(uri);
 		final EObject eObject = resource.getContents().get(0);
 		final VView view = (VView) eObject;

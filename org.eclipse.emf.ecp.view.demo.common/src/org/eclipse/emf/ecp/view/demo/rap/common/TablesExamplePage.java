@@ -31,8 +31,8 @@ public class TablesExamplePage implements IExamplePage {
 		parent.setLayout(gridLayout);
 
 		addParagraph(parent,
-			"Use the Button widget to create push buttons, toggle buttons, checkboxes and radiobuttons.");
-		addParagraph(parent, "Push and toggle buttons also support images.");
+			"Use the Button widget to create push buttons, toggle buttons, checkboxes and radiobuttons."); //$NON-NLS-1$
+		addParagraph(parent, "Push and toggle buttons also support images."); //$NON-NLS-1$
 
 		final User user = TaskFactory.eINSTANCE.createUser();
 
@@ -45,7 +45,7 @@ public class TablesExamplePage implements IExamplePage {
 
 	public void addHeading(Composite parent, String text) {
 		final Label label = new Label(parent, SWT.NONE);
-		label.setText(text.replace("&", "&&"));
+		label.setText(text.replace("&", "&&")); //$NON-NLS-1$//$NON-NLS-2$
 		// label.setData(RWT.CUSTOM_VARIANT, "infobox-heading");
 	}
 

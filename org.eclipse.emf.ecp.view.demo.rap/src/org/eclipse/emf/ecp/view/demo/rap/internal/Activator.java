@@ -30,7 +30,7 @@ public class Activator implements BundleActivator {
 		serviceTracker = new ExampleContributionsTracker(context);
 		serviceTracker.open();
 		final Dictionary<String, String> properties = new Hashtable<String, String>();
-		properties.put("contextPath", "rapdemo");
+		properties.put("contextPath", "rapdemo"); //$NON-NLS-1$//$NON-NLS-2$
 		registration = context.registerService(
 			ApplicationConfiguration.class.getName(),
 			new ExampleApplication(), properties);

@@ -33,30 +33,30 @@ public class ExampleApplication implements ApplicationConfiguration {
 	@Override
 	public void configure(Application application) {
 		final Map<String, String> properties = new HashMap<String, String>();
-		properties.put(WebClient.PAGE_TITLE, "EMF Forms Showcase");
+		properties.put(WebClient.PAGE_TITLE, "EMF Forms Showcase"); //$NON-NLS-1$
 		properties.put(WebClient.BODY_HTML,
-			readTextFromResource("resources/body.html", "UTF-8"));
-		properties.put(WebClient.FAVICON, "icons/favicon.png");
+			readTextFromResource("resources/body.html", "UTF-8")); //$NON-NLS-1$ //$NON-NLS-2$
+		properties.put(WebClient.FAVICON, "icons/favicon.png"); //$NON-NLS-1$
 		application.setOperationMode(OperationMode.SWT_COMPATIBILITY);
-		application.addEntryPoint("/", MainUi.class, properties);
-		application.addStyleSheet(RWT.DEFAULT_THEME_ID, "theme/theme.css");
-		application.addResource("icons/favicon.png",
-			createResourceLoader("icons/favicon.png"));
-		application.addResource("icons/loading.gif",
-			createResourceLoader("icons/loading.gif"));
+		application.addEntryPoint("/", MainUi.class, properties); //$NON-NLS-1$
+		application.addStyleSheet(RWT.DEFAULT_THEME_ID, "theme/theme.css"); //$NON-NLS-1$
+		application.addResource("icons/favicon.png", //$NON-NLS-1$
+			createResourceLoader("icons/favicon.png")); //$NON-NLS-1$
+		application.addResource("icons/loading.gif", //$NON-NLS-1$
+			createResourceLoader("icons/loading.gif")); //$NON-NLS-1$
 		registerClientScriptingResources(application);
 	}
 
 	// TODO [rst] Replace this hack with a proper resource loading mechanism
 	// (see bug 369957)
 	private void registerClientScriptingResources(Application application) {
-		final Bundle clientScriptingBundle = findBundle("org.eclipse.rap.clientscripting");
+		final Bundle clientScriptingBundle = findBundle("org.eclipse.rap.clientscripting"); //$NON-NLS-1$
 		if (clientScriptingBundle != null) {
-			final String className = "org.eclipse.rap.clientscripting.internal.resources.ClientScriptingResources";
+			final String className = "org.eclipse.rap.clientscripting.internal.resources.ClientScriptingResources"; //$NON-NLS-1$
 			try {
 				final Class<?> resourceClass = clientScriptingBundle
 					.loadClass(className);
-				final Method registerMethod = resourceClass.getMethod("register",
+				final Method registerMethod = resourceClass.getMethod("register", //$NON-NLS-1$
 					Application.class);
 				registerMethod.invoke(null, application);
 			} catch (final Exception exception) {
@@ -96,7 +96,7 @@ public class ExampleApplication implements ApplicationConfiguration {
 			final InputStream inputStream = classLoader
 				.getResourceAsStream(resourceName);
 			if (inputStream == null) {
-				throw new RuntimeException("Resource not found: "
+				throw new RuntimeException("Resource not found: " //$NON-NLS-1$
 					+ resourceName);
 			}
 			try {
@@ -114,7 +114,7 @@ public class ExampleApplication implements ApplicationConfiguration {
 				inputStream.close();
 			}
 		} catch (final IOException e) {
-			throw new RuntimeException("Failed to read text from resource: "
+			throw new RuntimeException("Failed to read text from resource: " //$NON-NLS-1$
 				+ resourceName);
 		}
 		return result;

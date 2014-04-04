@@ -10,9 +10,11 @@ Require-Bundle: org.eclipse.rap.rwt;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.emf.ecp.ui.view.swt;bundle-version="1.2.1",
  org.eclipse.emf.ecp.core;bundle-version="1.2.1",
  com.eclipsesource.makeithappen.model;bundle-version="0.1.0",
- org.eclipse.core.databinding.observable,
- org.eclipse.rap.jface.databinding,
- org.eclipse.emf.ecp.view.model.provider.xmi,
+ org.eclipse.core.databinding.observable;bundle-version="1.4.0",
+ org.eclipse.rap.jface.databinding;bundle-version="2.3.0",
+ org.eclipse.emf.ecp.view.model.provider.xmi;bundle-version="1.2.0",
  org.eclipse.emf.ecp.view.demo.rap;bundle-version="1.0.0"
-Import-Package: org.osgi.framework
+Import-Package: org.osgi.framework;version="[1.6.0,2.0.0)"
 Service-Component: OSGI-INF/contribution.xml
+Export-Package: org.eclipse.emf.ecp.view.demo.rap.common;version="1.0.0", 
+ org.eclipse.emf.ecp.view.demo.rap.common.internal;version="1.0.0";x-internal:=true

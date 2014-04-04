@@ -19,7 +19,7 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
 
 public final class ExampleContributionsTracker extends
-	ServiceTracker<IExampleContribution, IExampleContribution> {
+ServiceTracker<IExampleContribution, IExampleContribution> {
 
 	private final Map<String, IExampleContribution> contributions;
 
@@ -34,7 +34,7 @@ public final class ExampleContributionsTracker extends
 		final IExampleContribution contribution = super.addingService(reference);
 		final String id = contribution.getId();
 		if (contributions.containsKey(id)) {
-			throw new IllegalStateException("Duplicate contribution id: " + id);
+			throw new IllegalStateException("Duplicate contribution id: " + id); //$NON-NLS-1$
 		}
 		contributions.put(id, contribution);
 		return contribution;
