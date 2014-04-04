@@ -28,6 +28,7 @@ import com.eclipsesource.makeithappen.model.task.User;
 
 public class ButtonExamplePage implements IExamplePage {
 
+	@Override
 	public void createControl(Composite parent) {
 		final GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
@@ -36,7 +37,8 @@ public class ButtonExamplePage implements IExamplePage {
 		final User user = TaskFactory.eINSTANCE.createUser();
 		final ViewModelFileExtensionsManager viewModelFileExtensionsManager = ViewModelFileExtensionsManager
 			.getInstance();
-		final URI uri = URI.createURI("platform:/plugin/org.eclipsesource.emf.forms.common/viewmodel/user.viewmodel");
+		final URI uri = URI
+			.createURI("platform:/plugin/org.eclipse.emf.ecp.view.demo.rap.common/viewmodel/user.viewmodel");
 		final Resource resource = ViewModelFileExtensionsManager.loadResource(uri);
 		final EObject eObject = resource.getContents().get(0);
 		final VView view = (VView) eObject;
