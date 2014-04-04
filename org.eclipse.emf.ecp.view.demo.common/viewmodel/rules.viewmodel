@@ -7,14 +7,19 @@
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://eclipsesource.com/makeithappen/model/task#//User/firstName"/>
       </domainModelReference>
     </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="lastName" labelAlignment="None">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="lastName">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://eclipsesource.com/makeithappen/model/task#//User/lastName"/>
       </domainModelReference>
     </children>
-    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="Height">
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control" name="height">
       <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
         <domainModelEFeature xsi:type="ecore:EAttribute" href="http://eclipsesource.com/makeithappen/model/task#//User/heigth"/>
+      </domainModelReference>
+    </children>
+    <children xsi:type="org.eclipse.emf.ecp.view.model:Control">
+      <domainModelReference xsi:type="org.eclipse.emf.ecp.view.model:FeaturePathDomainModelReference">
+        <domainModelEFeature xsi:type="ecore:EAttribute" href="http://eclipsesource.com/makeithappen/model/task#//Task/name"/>
       </domainModelReference>
     </children>
   </children>

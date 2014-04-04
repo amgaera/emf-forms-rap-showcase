@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="ECP RCP" sequenceNumber="241">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.h2" version="1.1.117.v201105142352"/>
+<unit id="org.h2.source" version="1.1.117.v201105142352"/>
+<unit id="org.apache.log4j.source" version="1.2.15.v201012070815"/>
+<unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
+<repository location="http://download.eclipse.org/modeling/emf/cdo/orbit/latest-S"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.rap.sdk.feature.feature.group" version="2.2.0.20131204-0942"/>
+<repository location="http://download.eclipse.org/rt/rap/2.2"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.emfstore.server.feature.feature.group" version="1.1.0.v20131205-1626"/>
+<unit id="org.eclipse.emf.emfstore.ecore.feature.feature.group" version="1.1.0.v20131205-1626"/>
+<unit id="org.eclipse.emf.emfstore.example.feature.feature.group" version="1.1.0.v20131205-1626"/>
+<unit id="org.eclipse.emf.emfstore.client.feature.feature.group" version="1.1.0.v20131205-1626"/>
+<unit id="org.eclipse.emf.emfstore.client.transaction.feature.feature.group" version="1.1.0.v20131205-1626"/>
+<unit id="org.eclipse.emf.emfstore.common.feature.feature.group" version="1.1.0.v20131205-1626"/>
+<unit id="org.eclipse.emf.emfstore.client.ui.feature.feature.group" version="1.1.0.v20131205-1626"/>
+<repository location="http://download.eclipse.org/emf-store/releases_11/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.ecp.rap.sdk.feature.feature.group" version="1.2.1.20140311-1143"/>
+<unit id="org.eclipse.emf.ecp.rap.util.feature.feature.group" version="1.2.1.20140311-1143"/>
+<unit id="org.eclipse.emf.ecp.emfforms.sdk.feature.feature.group" version="1.2.1.20140311-1143"/>
+<repository location="http://download.eclipse.org/ecp/releases/releases_12"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.rap.fileupload.feature.feature.group" version="2.2.0.20131212-1230"/>
+<repository location="http://download.eclipse.org/rt/rap/incubator/2.2/fileupload/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.sdk.ide" version="4.4.0.I20140306-1200"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.10.0.v20140310-0546"/>
+<unit id="org.eclipse.graphiti.feature.feature.group" version="0.11.0.v20140312-0950"/>
+<unit id="org.eclipse.rap.sdk.feature.feature.group" version="2.3.0.20140311-0943"/>
+<unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.8.0.201403111732"/>
+<unit id="org.eclipse.net4j.sdk.feature.group" version="4.3.0.v20140308-0604"/>
+<unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="2.3.0.20140310-0716"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.10.0.v20140306-1200"/>
+<unit id="org.eclipse.rap.feature.feature.group" version="2.3.0.20140311-0943"/>
+<unit id="org.eclipse.graphiti.export.feature.feature.group" version="0.11.0.v20140312-0950"/>
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.10.0.201401270305"/>
+<unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.3.0.v20140312-0617"/>
+<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.8.0.201403111711"/>
+<unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.10.0.v20140310-0546"/>
+<repository location="http://download.eclipse.org/releases/luna"/>
+</location>
+</locations>
+</target>

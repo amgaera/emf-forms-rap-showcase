@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Built-By: genie.rt.rap
 Bundle-SymbolicName: org.eclipse.emf.ecp.view.demo.rap
 Bundle-Activator: org.eclipse.emf.ecp.view.demo.rap.internal.Activator
