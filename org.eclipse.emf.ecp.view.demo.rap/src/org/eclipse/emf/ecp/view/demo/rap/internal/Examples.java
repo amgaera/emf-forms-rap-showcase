@@ -66,8 +66,7 @@ public final class Examples {
 		exampleCategories.add(createCategory("Controls", "button"));
 		exampleCategories.add(createCategory("Layouts", "layout"));
 		exampleCategories.add(createCategory("Rules", "rules"));
-		exampleCategories.add(createCategory("Custom controls", "table-template"));
-		exampleCategories.add(createCategory("Overal example", "overal-example"));
+		exampleCategories.add(createCategory("Overall example", "overall-example"));
 		return exampleCategories;
 	}
 

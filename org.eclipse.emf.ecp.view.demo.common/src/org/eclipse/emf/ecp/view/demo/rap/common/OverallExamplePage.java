@@ -10,19 +10,22 @@
  ******************************************************************************/
 package org.eclipse.emf.ecp.view.demo.rap.common;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecp.ui.view.ECPRendererException;
 import org.eclipse.emf.ecp.ui.view.swt.ECPSWTViewRenderer;
-import org.eclipse.emf.ecp.view.demo.rap.ExampleUtil;
 import org.eclipse.emf.ecp.view.demo.rap.IExamplePage;
-import org.eclipse.swt.SWT;
+import org.eclipse.emf.ecp.view.model.provider.xmi.ViewModelFileExtensionsManager;
+import org.eclipse.emf.ecp.view.spi.model.VView;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 
 import com.eclipsesource.makeithappen.model.task.TaskFactory;
 import com.eclipsesource.makeithappen.model.task.User;
 
-public class TablesExamplePage implements IExamplePage {
+@SuppressWarnings("restriction")
+public class OverallExamplePage implements IExamplePage {
 
 	@Override
 	public void createControl(Composite parent) {
@@ -30,29 +33,17 @@ public class TablesExamplePage implements IExamplePage {
 		gridLayout.numColumns = 1;
 		parent.setLayout(gridLayout);
 
-		addParagraph(parent,
-			"Use the Button widget to create push buttons, toggle buttons, checkboxes and radiobuttons."); //$NON-NLS-1$
-		addParagraph(parent, "Push and toggle buttons also support images."); //$NON-NLS-1$
-
 		final User user = TaskFactory.eINSTANCE.createUser();
+		final URI uri = URI
+			.createURI("platform:/plugin/org.eclipse.emf.ecp.view.demo.common/viewmodel/overall.viewmodel"); //$NON-NLS-1$
+		final Resource resource = ViewModelFileExtensionsManager.loadResource(uri);
+		final EObject eObject = resource.getContents().get(0);
+		final VView view = (VView) eObject;
 
 		try {
-			ECPSWTViewRenderer.INSTANCE.render(parent, user);
+			ECPSWTViewRenderer.INSTANCE.render(parent, user, view);
 		} catch (final ECPRendererException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void addHeading(Composite parent, String text) {
-		final Label label = new Label(parent, SWT.NONE);
-		label.setText(text.replace("&", "&&")); //$NON-NLS-1$//$NON-NLS-2$
-		// label.setData(RWT.CUSTOM_VARIANT, "infobox-heading");
-	}
-
-	public void addParagraph(Composite parent, String text) {
-		final Label label = new Label(parent, SWT.WRAP);
-		label.setText(text);
-		label.setLayoutData(ExampleUtil.createFillData());
-		// label.setData(RWT.CUSTOM_VARIANT, "infobox");
 	}
 }
